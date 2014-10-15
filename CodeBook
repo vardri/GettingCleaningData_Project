@@ -1,1 +1,63 @@
-CodeBook
+CODE_BOOK
+=========
+
+Script purposes:
+1) Merges the training and the test sets to create one data set.
+2) Extracts only the measurements on the mean and standard deviation for each measurement. 
+3) Uses descriptive activity names to name the activities in the data set
+4) Appropriately labels the data set with descriptive variable names. 
+5) From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each 
+activity and each subject.
+
+Data:
+Data sets represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is 
+available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
+and the data can be uploaded here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+
+Files:
+Data are contained into the UCI HAR Dataset, which contain txt files and two folders: test and train. The following text files
+are necessary for the project:
+- features.txt
+- activity_labels.txt
+- subject_train.txt
+- x_train.txt
+- y_train.txt
+- subject_test.txt
+- x_test.txt
+- y_test.txt
+
+The working directory is set up at the beginning of the script, don't forget to change it according to yours when using this script.
+
+So first step is to read the files and merges the training and the test sets to create one data set. In the script, it corresponds
+to
+##1.Merges the training and the test sets to create one data set.
+  ##A.Read in the data from files into the main, train and test folder
+  ##B.Assign names to each column of the dataset
+  ##C.Merge A) the three subsets: yTrain, subjectTrain, and xTrain and B) the three test subsets: xTest, yTest and 
+  subjectTest data
+  ##D.Combine the data set created en C and D to get the final data set
+  ##E.Create a vector for the column names from the finalData, which will be used in step 2 for the mean and standard 
+  deviation
+
+Then, the requiered info is extracted:
+##2.Extracts only the measurements on the mean and standard deviation for each measurement.  
+  ##A.Create a logicalVector that contains TRUE values for requieres info: ID, mean() & stddev() columns and FALSE 
+  for rest
+  ##B.Subset finalData table created in 1D using the logicalVector
+
+Columns need to be rename with the activity type, and it is achieved byt step 3 and 4:
+##3.Uses descriptive activity names to name the activities in the data set.
+  ##A.Merge the finalData updated in 2B with the acitivityType table to include the activity names
+  ##B.Updating the colNames vector to include the new info about activity
+##4.Appropriately labels the data set with descriptive variable names. 
+  ##A.Clean up the variable names
+  
+Finally, the TidyData Set is created and the results are written into the work repo:
+##5.From the data set in step 4, creates a second, independent tidy data set with the average of each 
+variable for each activity and each subject.
+  ##A.Create tidy data set with the average of each variable
+  ##B.Merging the tidy data set with activity type to data for each activity/subject
+  ##C.Write the tidy data set into folder
+  
+For more info into the purpose of this project, refere to the README file please.
